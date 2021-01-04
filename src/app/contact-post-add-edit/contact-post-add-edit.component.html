@@ -1,0 +1,49 @@
+<h1>{{actionType}} Contact</h1>
+<form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+  <div class="form-group row">
+    <label class=" control-label col-md-12">First Name</label>
+    <div class="col-md-12">
+      <input class="form-control" type="text" formControlName="firstname">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Surname</label>
+    <div class="col-md-12">
+      <input class="form-control" type="text" formControlName="surname">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="control-label col-md-12">Date of Birth</label>
+    <div class="col-md-12">
+      <input class="form-control" type="date" formControlName="birthDate" data-val-required="The date field is required" />
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="control-label col-md-12">Date of Update</label>
+    <div class="col-md-12">
+      <input class="form-control" type="date" formControlName="updatedDate" readonly />
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="control-label col-md-12">Contact Type</label>
+    <div class="col-md-12">
+      <select class="form-control" formControlName="contactType">
+        <option value="">Select a contact type</option>
+        <option value="1">Address</option>
+        <option value="2">Cell</option>
+        <option value="3">Email</option>
+        <option value="4">Telephone</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="control-label col-md-12">Description</label>
+    <div class="col-md-12">
+      <input class="form-control" type="text" formControlName="description">
+    </div>
+  </div>
+    <div class="form-group">
+      <button type="submit" [disabled]="!userForm.valid" class="btn btn-success float-right">Save Contact</button>
+      <button class="btn btn-secondary float-left" (click)="cancel()">Cancel</button>
+    </div>
+</form>

@@ -1,0 +1,15 @@
+<ng-container *ngIf="(contactPost$ | async) as contactPost; else loading">
+
+  <h1>Contact</h1>
+  <ul>
+    <li>First Name: {{contactPost.firstname }}</li>
+    <li>Surname: {{contactPost.surname }}</li>
+    <li>Date of Birth: {{contactPost.dateOfBirth}}</li>
+    <li>Date of Update: {{contactPost.updatedDate}}</li>
+  </ul>
+  <h2>Contact Details</h2>
+  <ul>
+    <li>Contact Type: {{contactPost.contactDetail.description}}</li>
+  </ul>
+</ng-container>
+<ng-template #loading>Loading contact ... </ng-template>

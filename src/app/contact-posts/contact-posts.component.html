@@ -1,0 +1,31 @@
+<h1>Address Book: Contacts</h1>
+
+<p *ngIf="!(contactPosts$ | async)"><em>Loading contacts...</em></p>
+<p>
+  <a [routerLink]="['/add']" class="btn btn-primary float-right mb-3">New contact</a>
+</p>
+
+<table class="table table-sm table-hover" *ngIf="(contactPosts$ | async)?.length>0">
+  <thead>
+    <tr>
+      <th>Contact Id</th>
+      <th>First Name</th>
+      <th>Surname</th>
+      <th>Date of Birth</th>
+      <th>Date of Update</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contactPost of (contactPosts$ | async)">
+      <td><a [routerLink]="['/contact/', contactPost.contactId]">{{ contactPost.contactId }}</a></td>
+      <td>{{ contactPost.firstname}}</td>
+      <td>{{ contactPost.surname }}</td>
+      <td>{{ contactPost.birthDate | date: "yyyy-MM-dd" }}</td>
+      <td>{{ contactPost.updatedDate | date: "yyyy-MM-dd" }}</td>
+      <td><a [routerLink]="['/contact/edit/', contactPost.contactId]" class="btn btn-primary btn-sm float-right">Edit Contact</a></td>
+      <td><a [routerLink]="" (click)="delete(contactPost.contactId)" class="btn btn-danger btn-sm float-right">Delete Contact</a></td>
+    </tr>
+  </tbody>
+</table>
